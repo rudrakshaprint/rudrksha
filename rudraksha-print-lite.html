@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rudraksha Print – Complete Signage Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0a0a0a;--white:#f8f5f0;--gold:#c9a84c;--gold-light:#e8c97a;--gold-dark:#9a7a2e;--grey:#e2ddd6;--text-muted:#6b6560;--card-bg:#fff}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--black);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 6vw;background:rgba(248,245,240,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.2);transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,0.07)}
+.logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:900;letter-spacing:-0.5px;color:var(--black);text-decoration:none}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{font-size:.88rem;font-weight:500;letter-spacing:.5px;text-decoration:none;color:var(--text-muted);text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--black);color:var(--white)!important;padding:9px 20px;border-radius:4px;transition:background .2s!important}
+.nav-cta:hover{background:var(--gold)!important;color:var(--black)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{width:24px;height:2px;background:var(--black);border-radius:2px;transition:.3s}
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:100px 6vw 60px;gap:4rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 70% 50%,rgba(201,168,76,0.08) 0%,transparent 70%)}
+.hero-grid-lines{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(201,168,76,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,0.06) 1px,transparent 1px);background-size:60px 60px}
+.hero-content{position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.35);padding:6px 14px;border-radius:30px;font-size:.78rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--gold-dark);margin-bottom:1.5rem;animation:fadeUp .6s ease both}
+.hero-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--gold)}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,5.5vw,4.8rem);font-weight:900;line-height:1.05;letter-spacing:-2px;color:var(--black);margin-bottom:1.4rem;animation:fadeUp .7s .1s ease both}
+h1 em{color:var(--gold);font-style:normal}
+.hero-sub{font-size:1.08rem;color:var(--text-muted);line-height:1.7;max-width:480px;margin-bottom:2.2rem;animation:fadeUp .7s .2s ease both}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .7s .3s ease both}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--black);color:var(--white);padding:14px 28px;border-radius:6px;font-weight:600;font-size:.95rem;text-decoration:none;letter-spacing:.3px;transition:all .25s;border:2px solid var(--black)}
+.btn-primary:hover{background:var(--gold);border-color:var(--gold);color:var(--black)}
+.btn-secondary{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--black);padding:14px 28px;border-radius:6px;font-weight:600;font-size:.95rem;text-decoration:none;letter-spacing:.3px;transition:all .25s;border:2px solid rgba(0,0,0,0.2)}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold)}
+section{padding:90px 6vw}
+.section-label{font-size:.76rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:900;line-height:1.1;letter-spacing:-1px;color:var(--black);margin-bottom:16px}
+.section-desc{font-size:1rem;color:var(--text-muted);line-height:1.7;max-width:540px}
+.section-header{margin-bottom:3.5rem}
+#stats{background:var(--black);padding:50px 6vw;display:flex;justify-content:space-around;flex-wrap:wrap;gap:2rem}
+.stat{text-align:center}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:var(--gold)}
+.stat-label{font-size:.85rem;color:rgba(255,255,255,0.5);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+.product-card{background:var(--card-bg);border-radius:16px;border:1px solid var(--grey);overflow:hidden;transition:transform .3s,box-shadow .3s}
+.product-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,0.1)}
+.pcard-visual{height:280px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.pcard-visual img{width:100%;height:100%;object-fit:contain;display:block;background:#f5f5f5}
+.pcard-body{padding:24px 26px}
+.pcard-body h3{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;margin-bottom:8px;color:var(--black)}
+.pcard-body p{font-size:.92rem;color:var(--text-muted);line-height:1.65;margin-bottom:18px}
+.pcard-features{display:flex;flex-wrap:wrap;gap:7px}
+.pfeat{font-size:.75rem;font-weight:600;letter-spacing:.5px;padding:4px 12px;border-radius:20px;background:var(--white);border:1px solid var(--grey);color:var(--text-muted)}
+#contact{background:var(--black)}
+#contact .section-title{color:var(--white)}
+#contact .section-desc{color:rgba(255,255,255,0.5)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-info{display:flex;flex-direction:column;gap:1.5rem}
+.cinfo-item{display:flex;align-items:flex-start;gap:16px;padding:20px;border-radius:12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)}
+.cinfo-icon{width:42px;height:42px;border-radius:10px;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.25);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.cinfo-text strong{display:block;color:var(--white);font-size:.9rem;margin-bottom:3px}
+.cinfo-text span{font-size:.88rem;color:rgba(255,255,255,0.45)}
+.cinfo-text a{color:rgba(255,255,255,0.7);text-decoration:none;transition:color .2s}
+.cinfo-text a:hover{color:var(--gold)}
+.whatsapp-btn{display:flex;align-items:center;justify-content:center;gap:12px;background:#25D366;color:white;padding:15px 28px;border-radius:8px;font-weight:700;font-size:1rem;text-decoration:none;letter-spacing:.3px;transition:all .25s;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+.whatsapp-btn:hover{background:#128C7E;transform:translateY(-2px);box-shadow:0 8px 25px rgba(37,211,102,0.3)}
+.whatsapp-icon{font-size:1.3rem}
+.signages-main{background:#f8f6f0;padding:2.5rem;border-radius:16px;margin-bottom:3rem;border:1px solid var(--grey)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){nav{padding:15px 5vw}.nav-links{position:fixed;top:71px;left:0;right:0;background:rgba(248,245,240,0.98);backdrop-filter:blur(12px);flex-direction:column;align-items:center;padding:2rem 0;transform:translateY(-100%);opacity:0;pointer-events:none;transition:.4s;border-bottom:1px solid rgba(201,168,76,0.2)}.nav-links.active{transform:translateY(0);opacity:1;pointer-events:all}.hamburger{display:flex}#hero{grid-template-columns:1fr;padding:90px 5vw 50px;text-align:center}.hero-btns{justify-content:center}.contact-grid{grid-template-columns:1fr;gap:2.5rem}.products-grid{grid-template-columns:1fr}}
+@media(max-width:640px){h1{font-size:2.2rem}.products-grid{grid-template-columns:1fr}.pcard-visual{height:220px}}
+</style>
+</head>
+<body>
+<nav id="navbar">
+<a href="#" class="logo">Rudraksha <span>Print</span></a>
+<ul class="nav-links">
+<li><a href="#hero">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#products">Products</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#contact" class="nav-cta">Contact Us</a></li>
+</ul>
+<div class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+<span></span><span></span><span></span>
+</div>
+</nav>
+
+<section id="hero">
+<div class="hero-bg"></div>
+<div class="hero-grid-lines"></div>
+<div class="hero-content">
+<div class="hero-badge"><span></span> Balaghat Ka Premium Signage Expert</div>
+<h1><em>Har Naam Ko</em><br>Ek Pehchaan</h1>
+<p class="hero-sub">Premium signage solutions jo aapke business ko unique identity dein. Complete fabrication, installation aur maintenance — sab ek jagah.</p>
+<div class="hero-btns">
+<a href="https://wa.me/919098132223?text=Hello%2C%20I%20want%20to%20know%20about%20your%20signage%20services" class="btn-primary">
+<span>📞</span> WhatsApp Karein
+</a>
+<a href="#products" class="btn-secondary">View Our Work</a>
+</div>
+</div>
+<div style="position:relative;z-index:1;display:flex;align-items:center;justify-content:center">
+<div style="font-size:8rem;opacity:.1">🎨</div>
+</div>
+</section>
+
+<div id="stats">
+<div class="stat reveal"><div class="stat-num">10+</div><div class="stat-label">Years Experience</div></div>
+<div class="stat reveal"><div class="stat-num">500+</div><div class="stat-label">Projects Done</div></div>
+<div class="stat reveal"><div class="stat-num">100%</div><div class="stat-label">Client Satisfaction</div></div>
+</div>
+
+<section id="about">
+<div class="section-header reveal">
+<div class="section-label">OUR STRENGTH</div>
+<h2 class="section-title">Hamare Paas Latest Machinery Hai</h2>
+<p class="section-desc">High-tech machines se precise aur professional kaam deliver karte hain</p>
+</div>
+<div class="products-grid">
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/machine1.jpg" alt="MS & SS Laser Cutting"></div>
+<div class="pcard-body"><h3>MS & SS Laser Cutting</h3></div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/machine2.jpg" alt="Laser Cutting"></div>
+<div class="pcard-body"><h3>Laser Cutting</h3></div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/machine3.jpg" alt="Channel Bending"></div>
+<div class="pcard-body"><h3>Channel Bending</h3></div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/machine4.jpg" alt="Flex Printing"></div>
+<div class="pcard-body"><h3>Flex Printing Machine</h3></div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/machine5.jpg" alt="Digital Printout"></div>
+<div class="pcard-body"><h3>Digital Printout</h3></div>
+</div>
+</div>
+</section>
+
+<section id="services" style="background:#f0ece6">
+<div class="section-header reveal">
+<div class="section-label">SERVICES</div>
+<h2 class="section-title">Humari Complete Services</h2>
+<p class="section-desc">Design se installation tak — sab kuch in-house</p>
+</div>
+<div class="products-grid">
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/service1.jpg" alt="ACP Cladding"></div>
+<div class="pcard-body">
+<h3>ACP Cladding</h3>
+<p>Modern ACP sheets se building facade ko premium look dein. Weather-resistant aur long-lasting finish.</p>
+<div class="pcard-features"><span class="pfeat">Weather Proof</span><span class="pfeat">Premium Finish</span></div>
+</div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/service2.jpg" alt="Signage Fabrication"></div>
+<div class="pcard-body">
+<h3>Signage Fabrication</h3>
+<p>In-house fabrication with precision cutting aur welding. MS, SS aur Acrylic — sabme expert hain.</p>
+<div class="pcard-features"><span class="pfeat">Precision Work</span><span class="pfeat">Quality Materials</span></div>
+</div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/service3.jpg" alt="Installation"></div>
+<div class="pcard-body">
+<h3>Signage Installation</h3>
+<p>Professional installation team jo safe aur secure mounting kare. Height par bhi kaam karte hain.</p>
+<div class="pcard-features"><span class="pfeat">Safe Install</span><span class="pfeat">Expert Team</span></div>
+</div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/service4.jpg" alt="Maintenance"></div>
+<div class="pcard-body">
+<h3>Maintenance & Warranty</h3>
+<p>Installation ke baad bhi humara support rahega. Regular maintenance aur warranty coverage available.</p>
+<div class="pcard-features"><span class="pfeat">Warranty</span><span class="pfeat">Support</span></div>
+</div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/service5.jpg" alt="Advertisement"></div>
+<div class="pcard-body">
+<h3>Advertisement</h3>
+<p>Hoardings, billboards aur outdoor advertising solutions — large-scale visibility ke liye.</p>
+<div class="pcard-features"><span class="pfeat">Outdoor Ads</span><span class="pfeat">Large Format</span></div>
+</div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/service6.jpg" alt="Corporate Branding"></div>
+<div class="pcard-body">
+<h3>Corporate Branding</h3>
+<p>Complete corporate identity solutions — logo boards, reception signs, office branding.</p>
+<div class="pcard-features"><span class="pfeat">Full Branding</span><span class="pfeat">Professional</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="products">
+<div class="section-header reveal">
+<div class="section-label">PRODUCTS</div>
+<h2 class="section-title">Hamare Premium Products</h2>
+<p class="section-desc">Har type ke signage solution available</p>
+</div>
+
+<div class="signages-main reveal">
+<div class="section-header" style="margin-bottom:2rem">
+<h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--black)">Signages</h3>
+<p style="color:var(--text-muted);font-size:.95rem">Different types of letter signages</p>
+</div>
+<div class="products-grid">
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/signage1.jpg" alt="Aluminum Channel Letter"></div>
+<div class="pcard-body">
+<h3>Aluminum Channel Letter</h3>
+<p>Lightweight yet durable aluminum letters jo bright aur clear dikh the hain. LED lit options available.</p>
+<div class="pcard-features"><span class="pfeat">LED Options</span><span class="pfeat">Lightweight</span><span class="pfeat">Durable</span></div>
+</div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/signage2.jpg" alt="MS Letter"></div>
+<div class="pcard-body">
+<h3>M.S. Letter</h3>
+<p>Strong mild steel letters jo heavy-duty applications ke liye perfect hain. Indoor aur outdoor dono.</p>
+<div class="pcard-features"><span class="pfeat">Heavy Duty</span><span class="pfeat">Strong</span><span class="pfeat">Versatile</span></div>
+</div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/signage3.jpg" alt="SS 304 Letter"></div>
+<div class="pcard-body">
+<h3>SS 304 Matt & Gloss Letter</h3>
+<p>Premium stainless steel finish — rust-proof aur long-lasting. Matt ya gloss dono options mein.</p>
+<div class="pcard-features"><span class="pfeat">Rust Proof</span><span class="pfeat">Premium Look</span><span class="pfeat">Long Life</span></div>
+</div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/signage4.jpg" alt="SS Border Letter"></div>
+<div class="pcard-body">
+<h3>SS 304 Matt & Gloss Border Letter</h3>
+<p>Stylish border letters jo extra visual appeal dein. Perfect for high-end branding.</p>
+<div class="pcard-features"><span class="pfeat">Stylish</span><span class="pfeat">Premium</span><span class="pfeat">Eye-catching</span></div>
+</div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/signage5.jpg" alt="Outdoor Totem"></div>
+<div class="pcard-body">
+<h3>Outdoor Totem Board</h3>
+<p>Freestanding totem poles jo entrance par impressive look dein. Directional signage ke liye bhi.</p>
+<div class="pcard-features"><span class="pfeat">Freestanding</span><span class="pfeat">Impressive</span><span class="pfeat">Directional</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="section-header reveal" style="margin-top:4rem">
+<h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--black)">Other Products</h3>
+</div>
+<div class="products-grid">
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/product1.jpg" alt="LED Display"></div>
+<div class="pcard-body">
+<h3>LED Display Board</h3>
+<p>Energy-efficient LED display boards — indoor aur outdoor dono ke liye. Bright, clear aur eye-catching.</p>
+<div class="pcard-features"><span class="pfeat">Bright Display</span><span class="pfeat">Low Power</span><span class="pfeat">Long Life</span></div>
+</div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/product2.jpg" alt="Neon Sign"></div>
+<div class="pcard-body">
+<h3>Neon Sign</h3>
+<p>Modern neon signs jo raat mein bhi aapke business ko highlight karein. Multiple colors available.</p>
+<div class="pcard-features"><span class="pfeat">Vibrant Colors</span><span class="pfeat">Night Visibility</span><span class="pfeat">Trendy Look</span></div>
+</div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/product3.jpg" alt="Glow Sign"></div>
+<div class="pcard-body">
+<h3>Glow Sign</h3>
+<p>Backlit glow signs jo din aur raat dono mein visible rahein. Acrylic aur LED combination.</p>
+<div class="pcard-features"><span class="pfeat">24/7 Visible</span><span class="pfeat">Backlit</span><span class="pfeat">Professional</span></div>
+</div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/product4.jpg" alt="Wayfinding"></div>
+<div class="pcard-body">
+<h3>Way Finding Signage</h3>
+<p>Directional signs jo hospitals, malls, offices mein logo ko sahi jagah le jayein. Clear aur readable.</p>
+<div class="pcard-features"><span class="pfeat">Clear Directions</span><span class="pfeat">Easy to Read</span><span class="pfeat">Custom Maps</span></div>
+</div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/product5.jpg" alt="Safety Signs"></div>
+<div class="pcard-body">
+<h3>Safety Signs</h3>
+<p>Safety aur warning signs — fire exit, caution, no entry. Industrial standards ke mutabik.</p>
+<div class="pcard-features"><span class="pfeat">IS Standards</span><span class="pfeat">High Visibility</span><span class="pfeat">Reflective</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="projects" style="background:#f0ece6">
+<div class="container">
+<div class="section-header reveal">
+<h2>Our Projects</h2>
+<p>Hamari kuch pramukh projects jo humne deliver ki hain</p>
+</div>
+<div class="products-grid">
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/project1.jpg" alt="Mohini Jewellers"></div>
+<div class="pcard-body"><h3>Mohini Jewellers - ACP Cladding & Signage</h3></div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/project2.jpg" alt="Political Campaign"></div>
+<div class="pcard-body"><h3>Mera Gaon Mera Abhimaan - Campaign Signage</h3></div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/project3.jpg" alt="Satvik Restaurant"></div>
+<div class="pcard-body"><h3>Satvik Restaurant - ACP Cladding</h3></div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/project4.jpg" alt="Sonalika Showroom"></div>
+<div class="pcard-body"><h3>Sonalika Showroom - LED Installation</h3></div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/project5.jpg" alt="Sagar Tailors"></div>
+<div class="pcard-body"><h3>Sagar Tailors - Backlit Signage</h3></div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/project6.jpg" alt="Aakar 2"></div>
+<div class="pcard-body"><h3>Aakar 2 - Vertical LED Sign</h3></div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/project7.jpg" alt="MOIL Limited"></div>
+<div class="pcard-body"><h3>MOIL Limited - Multi-Color LED</h3></div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/project8.jpg" alt="MOIL Balaghat"></div>
+<div class="pcard-body"><h3>MOIL Balaghat Mine - Outdoor LED</h3></div>
+</div>
+<div class="product-card reveal">
+<div class="pcard-visual"><img src="images/project9.jpg" alt="Police Thana"></div>
+<div class="pcard-body"><h3>Police Thana Birsa - Backlit Board</h3></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<div class="section-header reveal">
+<div class="section-label" style="color:var(--gold)">CONTACT</div>
+<h2 class="section-title">Get In Touch</h2>
+<p class="section-desc">Aaj hi apne signage project ki baat karein</p>
+</div>
+<div class="contact-grid">
+<div class="contact-info reveal">
+<div class="cinfo-item">
+<div class="cinfo-icon">📍</div>
+<div class="cinfo-text">
+<strong>Address</strong>
+<span>Ward No. 08, Devi Chowk<br>Balaghat (M.P.) 481001</span>
+</div>
+</div>
+<div class="cinfo-item">
+<div class="cinfo-icon">📞</div>
+<div class="cinfo-text">
+<strong>Phone</strong>
+<span><a href="tel:+919098132223">+91 9098132223</a><br><a href="tel:+919174232223">+91 9174232223</a></span>
+</div>
+</div>
+<div class="cinfo-item">
+<div class="cinfo-icon">✉️</div>
+<div class="cinfo-text">
+<strong>Email</strong>
+<span><a href="mailto:info@rudrakshaprin.com">info@rudrakshaprin.com</a></span>
+</div>
+</div>
+</div>
+<div class="reveal">
+<a href="https://wa.me/919098132223?text=Hello%2C%20I%20want%20to%20discuss%20a%20signage%20project" class="whatsapp-btn">
+<span class="whatsapp-icon">💬</span>
+WhatsApp Par Baat Karein
+</a>
+<div style="margin-top:1.5rem;padding:1.5rem;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px">
+<p style="color:rgba(255,255,255,0.7);font-size:.9rem;line-height:1.6">
+📍 <strong style="color:var(--white)">Visit Us:</strong><br>
+Ward No. 08, Devi Chowk, Balaghat<br>
+Open: Mon-Sat, 10 AM - 8 PM
+</p>
+</div>
+</div>
+</div>
+</section>
+
+<script>
+window.addEventListener('scroll',()=>{const n=document.getElementById('navbar');n.classList.toggle('scrolled',window.scrollY>50)});
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('active')})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
